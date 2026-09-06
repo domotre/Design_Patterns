@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Represents a player with a name and character.
  */
-public class Player {
+public abstract class Player {
     protected String name;
     protected ArrayList<String> character;
 
