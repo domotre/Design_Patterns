@@ -23,7 +23,7 @@ public abstract class State {
     }
 
     /**
-     * Gets a random definition from the current list of words.
+     * Gets a random definition 
      * 
      * @return a random definition
      */
