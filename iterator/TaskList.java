@@ -18,7 +18,7 @@ public class TaskList {
     }
 
     /**
-     * Adds a ticket
+     * Adds a new ticket
      */
     public void addTicket(String name, String teamMember, Difficulty difficulty) {
         tickets[count] = new Ticket(name, teamMember, difficulty);
@@ -26,7 +26,7 @@ public class TaskList {
     }
 
     /**
-     * Adds an existing ticket
+     * Adds a ticket
      */
     public void addTicket(Ticket ticket) {
         tickets[count] = ticket;
@@ -39,9 +39,19 @@ public class TaskList {
     public Ticket getTicket(String name) {
         for (int i = 0; i < count; i++) {
             if (tickets[i].getName().equals(name)) {
-                return tickets[i];
+                Ticket ticket = tickets[i];
+
+                for (int j = i; j < count - 1; j++) {
+                    tickets[j] = tickets[j + 1];
+                }
+
+                tickets[count - 1] = null;
+                count--;
+
+                return ticket;
             }
         }
+
         return null;
     }
 
@@ -57,7 +67,6 @@ public class TaskList {
      */
     public String toString() {
         String result = name + ":\n";
-
         TaskListIterator iterator = createIterator();
 
         while (iterator.hasNext()) {
